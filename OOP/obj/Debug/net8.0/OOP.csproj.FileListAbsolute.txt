@@ -12,3 +12,4 @@ C:\Users\yusuf\source\repos\OOP\OOP\obj\Debug\net8.0\refint\OOP.dll
 C:\Users\yusuf\source\repos\OOP\OOP\obj\Debug\net8.0\OOP.pdb
 C:\Users\yusuf\source\repos\OOP\OOP\obj\Debug\net8.0\OOP.genruntimeconfig.cache
 C:\Users\yusuf\source\repos\OOP\OOP\obj\Debug\net8.0\ref\OOP.dll
+C:\Users\yusuf\source\repos\OOP\OOP\obj\Debug\net8.0\OOP.sourcelink.json

@@ -5,108 +5,202 @@ namespace OOP
     internal class Program
     {
 
-        static int formingMagicSquare(int[,] s)
+        //static int formingMagicSquare(int[,] s)
+        //{
+
+        //    Console.WriteLine("Ilk durum:");
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        for (int j = 0; j < 3; j++)
+        //        {
+        //            Console.Write(s[i, j] + " ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+
+
+        //    int[] sumRows = new int[3];
+        //    int[] sumCols = new int[3];
+        //    int[] tempSumsRows = { 0, 0, 0 };
+        //    int[] tempSumsCols = { 0, 0, 0 };
+
+
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        for (int j = 0; j < 3; j++)
+        //        {
+        //            tempSumsRows[i] = tempSumsRows[i] + s[i, j];
+        //            tempSumsCols[i] = tempSumsCols[i] + s[j, i];
+
+        //        }
+        //        sumRows[i] = tempSumsRows[i];
+        //        sumCols[i] = tempSumsCols[i];
+        //        //Console.WriteLine(i + 1 + ". satırın toplamı: " + sumRows[i]);
+        //        //Console.WriteLine(i + 1 + ". sutunun toplamı: " + sumCols[i]);
+        //    }
+
+        //    int total = 0;
+        //    for (int i = 0; i < 3; i++)
+        //    {
+        //        for (int j = 0; j < 3; j++)
+        //        {
+        //            if (sumRows[i] == sumCols[j] && sumRows[i] != 15)
+        //            {
+        //                s[i, j] = s[i, j] + (15 - sumRows[i]);
+        //                sumRows[i] += total;
+        //                sumCols[j] += total;
+        //            }
+
+        //            else if (Math.Abs(sumRows[i] - 15) == Math.Abs(sumCols[j] - 15))
+        //            {
+        //                if (sumRows[i] - 15 > 0 && sumCols[j] - 15 < 0)
+        //                {
+        //                    for (int k = i + 1; k < 3; k++)
+        //                    {
+        //                        if (sumRows[k] < 15)
+        //                        {
+        //                            s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
+        //                            s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
+        //                        }
+        //                    }
+        //                }
+
+        //                else if (sumCols[j] - 15 > 0 && sumRows[i] - 15 < 0)
+        //                {
+        //                    for (int k = j + 1; k < 3; k++)
+        //                    {
+        //                        if (sumCols[k] < 15)
+        //                        {
+        //                            s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
+        //                            s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
+        //                        }
+        //                    }
+        //                }
+        //            }
+        //        }
+        //    }
+        //    Console.WriteLine("Son durum:");
+        //    for(int i = 0;i<3;i++)
+        //    {
+        //        for(int j = 0;j<3;j++)
+        //        {
+        //            Console.Write(s[i,j] + " ");
+        //        }
+        //        Console.WriteLine();
+        //    }
+
+        //    return 0;
+        //}
+
+
+        static int[] climbingLeaderboard(int[] leaderboard, int[] player)
         {
+            int[] tempLeaderboard = new int[leaderboard.Length +1];
 
-            Console.WriteLine("Ilk durum:");
-            for (int i = 0; i < 3; i++)
+
+            for(int i = 0; i < leaderboard.Length;i++)
             {
-                for (int j = 0; j < 3; j++)
+                if(i != 0 && leaderboard[i] == leaderboard[i-1])
                 {
-                    Console.Write(s[i, j] + " ");
+                    tempLeaderboard[i] = tempLeaderboard[i-1];
                 }
-                Console.WriteLine();
-            }
-
-
-            int[] sumRows = new int[3];
-            int[] sumCols = new int[3];
-            int[] tempSumsRows = { 0, 0, 0 };
-            int[] tempSumsCols = { 0, 0, 0 };
-
-
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
+                else if( i == 0 )
                 {
-                    tempSumsRows[i] = tempSumsRows[i] + s[i, j];
-                    tempSumsCols[i] = tempSumsCols[i] + s[j, i];
-
+                    tempLeaderboard[i] = i+1;
                 }
-                sumRows[i] = tempSumsRows[i];
-                sumCols[i] = tempSumsCols[i];
-                //Console.WriteLine(i + 1 + ". satırın toplamı: " + sumRows[i]);
-                //Console.WriteLine(i + 1 + ". sutunun toplamı: " + sumCols[i]);
-            }
-            int cost = 0;
-            for (int i = 0; i < 3; i++)
-            {
-                for (int j = 0; j < 3; j++)
+                else
                 {
-                    if (sumRows[i] == sumCols[j] && sumRows[i] != 15)
+                    tempLeaderboard[i] = tempLeaderboard[i - 1] + 1;
+                }
+            }
+            // temp =  1 2 2 3 4 5 ; 
+
+            int[] ints = new int[player.Length];
+            //50 65 77 90 102 player[]
+            for (int j = 0; j < player.Length; j++)
+            {
+                for (int i = 0; i < leaderboard.Length; i++)
+                {
+                    if (player[j] > leaderboard[i])
                     {
-                        cost = 15 - sumRows[i];
-                        s[i, j] = s[i, j] + (15 - sumRows[i]);
-                        sumRows[i] += cost;
-                        sumCols[j] += cost;
+                        
+                        if (i != 0)
+                        {
+                           // tempLeaderboard[]
+                            tempLeaderboard[tempLeaderboard.Length - 1] = tempLeaderboard[i];
+                            ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
+                            break;
+                        }
+                        else if(i == 0)
+                        {
+                            tempLeaderboard[tempLeaderboard.Length - 1] = i+1;
+                            ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
+                            break;
+                        }
+                        else if (tempLeaderboard[j] == 1)
+                        {
+                            tempLeaderboard[tempLeaderboard.Length - 1] = 1;
+                            ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
+                            break;
+                        }
                     }
 
-                    else if (Math.Abs(sumRows[i] - 15) == Math.Abs(sumCols[j] - 15))
+                    else if (player[j] == leaderboard[i])
                     {
-                        if (sumRows[i] - 15 > 0 && sumCols[j] - 15 < 0)
-                        {
-                            for (int k = i + 1; k < 3; k++)
-                            {
-                                if (sumRows[k] < 15)
-                                {
-                                    s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
-                                    s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
-                                }
-                            }
-                        }
-
-                        else if (sumCols[j] - 15 > 0 && sumRows[i] - 15 < 0)
-                        {
-                            for (int k = j + 1; k < 3; k++)
-                            {
-                                if (sumCols[k] < 15)
-                                {
-                                    s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
-                                    s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
-                                }
-                            }
-                        }
+                        tempLeaderboard[tempLeaderboard.Length - 1] = tempLeaderboard[i];
+                        ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
+                        break;
+                    }
+                    else if(player[j] < leaderboard[i] &&  i == leaderboard.Length - 1)
+                    {
+                        tempLeaderboard[tempLeaderboard.Length - 1] = tempLeaderboard[i] +1 ;
+                        ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
+                        break;
                     }
                 }
             }
-            Console.WriteLine("Son durum:");
-            for(int i = 0;i<3;i++)
-            {
-                for(int j = 0;j<3;j++)
-                {
-                    Console.Write(s[i,j] + " ");
-                }
-                Console.WriteLine();
-            }
-
-            return 0;
+            return ints;
         }
-
-
 
         static void Main(string[] args)
         {
+            /*
             int[,] S = { {2,7,6 }, {9,5,1 }, {4,3,8 } };
-            formingMagicSquare(S); 
+            formingMagicSquare(S); */
 
             /*
             int[,] S = { { 5, 3, 4 }, { 1, 5, 8 }, { 6, 4, 2 } };
             formingMagicSquare(S);*/
 
-            /*
+
             int[,] S2 = { { 4, 8, 2 }, { 4, 5, 7 }, { 6, 1, 6 } };
-            formingMagicSquare(S2);*/
+
+            int lengthLeader = int.Parse(Console.ReadLine());
+            int[] leaderBoard = new int[lengthLeader];
+            Console.WriteLine(lengthLeader);
+
+            for(int i = 0; i < lengthLeader; i++)
+            { leaderBoard[i] = int.Parse(Console.ReadLine()); }
+
+            int playerLength = int.Parse(Console.ReadLine());
+            int[] playerTable = new int[playerLength];
+
+            for (int i = 0; i < playerTable.Length; i++)
+            { playerTable[i] = int.Parse(Console.ReadLine()); }
+
+            for (int i = 0; i < playerTable.Length; i++)
+            { Console.WriteLine(playerTable[i]); }
+
+            for(int i = 0; i < climbingLeaderboard(leaderBoard, playerTable).Length; i++)
+            {
+                Console.WriteLine(climbingLeaderboard(leaderBoard, playerTable)[i]);
+            }
+
 
         }
+
+
+
+
     }
 }
