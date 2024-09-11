@@ -1,96 +1,97 @@
 ﻿using System;
+using System.Numerics;
 
 namespace OOP
 {
     internal class Program
     {
 
-        //static int formingMagicSquare(int[,] s)
-        //{
+        static int formingMagicSquare(int[,] s)
+        {
 
-        //    Console.WriteLine("Ilk durum:");
-        //    for (int i = 0; i < 3; i++)
-        //    {
-        //        for (int j = 0; j < 3; j++)
-        //        {
-        //            Console.Write(s[i, j] + " ");
-        //        }
-        //        Console.WriteLine();
-        //    }
-
-
-        //    int[] sumRows = new int[3];
-        //    int[] sumCols = new int[3];
-        //    int[] tempSumsRows = { 0, 0, 0 };
-        //    int[] tempSumsCols = { 0, 0, 0 };
+            Console.WriteLine("Ilk durum:");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(s[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
 
 
-        //    for (int i = 0; i < 3; i++)
-        //    {
-        //        for (int j = 0; j < 3; j++)
-        //        {
-        //            tempSumsRows[i] = tempSumsRows[i] + s[i, j];
-        //            tempSumsCols[i] = tempSumsCols[i] + s[j, i];
+            int[] sumRows = new int[3];
+            int[] sumCols = new int[3];
+            int[] tempSumsRows = { 0, 0, 0 };
+            int[] tempSumsCols = { 0, 0, 0 };
 
-        //        }
-        //        sumRows[i] = tempSumsRows[i];
-        //        sumCols[i] = tempSumsCols[i];
-        //        //Console.WriteLine(i + 1 + ". satırın toplamı: " + sumRows[i]);
-        //        //Console.WriteLine(i + 1 + ". sutunun toplamı: " + sumCols[i]);
-        //    }
 
-        //    int total = 0;
-        //    for (int i = 0; i < 3; i++)
-        //    {
-        //        for (int j = 0; j < 3; j++)
-        //        {
-        //            if (sumRows[i] == sumCols[j] && sumRows[i] != 15)
-        //            {
-        //                s[i, j] = s[i, j] + (15 - sumRows[i]);
-        //                sumRows[i] += total;
-        //                sumCols[j] += total;
-        //            }
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    tempSumsRows[i] = tempSumsRows[i] + s[i, j];
+                    tempSumsCols[i] = tempSumsCols[i] + s[j, i];
 
-        //            else if (Math.Abs(sumRows[i] - 15) == Math.Abs(sumCols[j] - 15))
-        //            {
-        //                if (sumRows[i] - 15 > 0 && sumCols[j] - 15 < 0)
-        //                {
-        //                    for (int k = i + 1; k < 3; k++)
-        //                    {
-        //                        if (sumRows[k] < 15)
-        //                        {
-        //                            s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
-        //                            s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
-        //                        }
-        //                    }
-        //                }
+                }
+                sumRows[i] = tempSumsRows[i];
+                sumCols[i] = tempSumsCols[i];
+                //Console.WriteLine(i + 1 + ". satırın toplamı: " + sumRows[i]);
+                //Console.WriteLine(i + 1 + ". sutunun toplamı: " + sumCols[i]);
+            }
 
-        //                else if (sumCols[j] - 15 > 0 && sumRows[i] - 15 < 0)
-        //                {
-        //                    for (int k = j + 1; k < 3; k++)
-        //                    {
-        //                        if (sumCols[k] < 15)
-        //                        {
-        //                            s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
-        //                            s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
-        //                        }
-        //                    }
-        //                }
-        //            }
-        //        }
-        //    }
-        //    Console.WriteLine("Son durum:");
-        //    for(int i = 0;i<3;i++)
-        //    {
-        //        for(int j = 0;j<3;j++)
-        //        {
-        //            Console.Write(s[i,j] + " ");
-        //        }
-        //        Console.WriteLine();
-        //    }
+            int total = 0;
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    if (sumRows[i] == sumCols[j] && sumRows[i] != 15)
+                    {
+                        s[i, j] = s[i, j] + (15 - sumRows[i]);
+                        sumRows[i] += total;
+                        sumCols[j] += total;
+                    }
 
-        //    return 0;
-        //}
+                    else if (Math.Abs(sumRows[i] - 15) == Math.Abs(sumCols[j] - 15))
+                    {
+                        if (sumRows[i] - 15 > 0 && sumCols[j] - 15 < 0)
+                        {
+                            for (int k = i + 1; k < 3; k++)
+                            {
+                                if (sumRows[k] < 15)
+                                {
+                                    s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
+                                    s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
+                                }
+                            }
+                        }
+
+                        else if (sumCols[j] - 15 > 0 && sumRows[i] - 15 < 0)
+                        {
+                            for (int k = j + 1; k < 3; k++)
+                            {
+                                if (sumCols[k] < 15)
+                                {
+                                    s[i, j] = s[i, j] - Math.Abs(sumRows[i] - 15);
+                                    s[k, j] = s[k, j] + Math.Abs(sumRows[i] - 15);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("Son durum:");
+            for (int i = 0; i < 3; i++)
+            {
+                for (int j = 0; j < 3; j++)
+                {
+                    Console.Write(s[i, j] + " ");
+                }
+                Console.WriteLine();
+            }
+
+            return 0;
+        }
 
 
         static int[] climbingLeaderboard(int[] leaderboard, int[] player)
@@ -162,40 +163,51 @@ namespace OOP
             return ints;
         }
 
+
+        static BigInteger extraLongFactorials(BigInteger n)
+        {
+
+            if (n == 0 || n == 1) { return 1; }
+            else
+            {
+                return extraLongFactorials(n - 1) * n;
+            }
+        }
+
         static void Main(string[] args)
         {
-            /*
+            /* // for Magic square problem 
             int[,] S = { {2,7,6 }, {9,5,1 }, {4,3,8 } };
-            formingMagicSquare(S); */
-
-            /*
+            formingMagicSquare(S); 
             int[,] S = { { 5, 3, 4 }, { 1, 5, 8 }, { 6, 4, 2 } };
-            formingMagicSquare(S);*/
-
-
+            formingMagicSquare(S);
             int[,] S2 = { { 4, 8, 2 }, { 4, 5, 7 }, { 6, 1, 6 } };
+            */
 
-            int lengthLeader = int.Parse(Console.ReadLine());
-            int[] leaderBoard = new int[lengthLeader];
-            Console.WriteLine(lengthLeader);
 
-            for(int i = 0; i < lengthLeader; i++)
-            { leaderBoard[i] = int.Parse(Console.ReadLine()); }
+            //int lengthLeader = int.Parse(Console.ReadLine());
+            //int[] leaderBoard = new int[lengthLeader];
+            //Console.WriteLine(lengthLeader);
 
-            int playerLength = int.Parse(Console.ReadLine());
-            int[] playerTable = new int[playerLength];
+            //for(int i = 0; i < lengthLeader; i++)
+            //{ leaderBoard[i] = int.Parse(Console.ReadLine()); }
 
-            for (int i = 0; i < playerTable.Length; i++)
-            { playerTable[i] = int.Parse(Console.ReadLine()); }
+            //int playerLength = int.Parse(Console.ReadLine());
+            //int[] playerTable = new int[playerLength];
 
-            for (int i = 0; i < playerTable.Length; i++)
-            { Console.WriteLine(playerTable[i]); }
+            //for (int i = 0; i < playerTable.Length; i++)
+            //{ playerTable[i] = int.Parse(Console.ReadLine()); }
 
-            for(int i = 0; i < climbingLeaderboard(leaderBoard, playerTable).Length; i++)
-            {
-                Console.WriteLine(climbingLeaderboard(leaderBoard, playerTable)[i]);
-            }
+            //for (int i = 0; i < playerTable.Length; i++)
+            //{ Console.WriteLine(playerTable[i]); }
 
+            //for(int i = 0; i < climbingLeaderboard(leaderBoard, playerTable).Length; i++)
+            //{
+            //    Console.WriteLine(climbingLeaderboard(leaderBoard, playerTable)[i]);
+            //}
+            Console.WriteLine("Sayi giriniz:");
+            BigInteger n = BigInteger.Parse(Console.ReadLine());
+            Console.WriteLine(extraLongFactorials(n));
 
         }
 
