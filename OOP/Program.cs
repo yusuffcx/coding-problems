@@ -163,6 +163,8 @@ namespace OOP
             return ints;
         }
 
+        
+
 
         static BigInteger extraLongFactorials(BigInteger n)
         {
@@ -173,6 +175,44 @@ namespace OOP
                 return extraLongFactorials(n - 1) * n;
             }
         }
+
+        static int nonDivisibleSubset(int k, int[]s)
+        {
+            int[] tempMod = new int[k]; // 0, 1, 2, 3, ....k //7
+            int ans = 0;
+            foreach (int i in tempMod) { tempMod[i] = 0; }
+            for(int i = 0;i<s.Length;i++)
+            {
+                tempMod[s[i] % k]++; 
+            }
+
+            for(int i = 0;i<=k/2;i++)
+            {
+                if(tempMod[i]>0 && i == 0)
+                {
+                    ans++;
+                }
+                else if (k%2 == 0 && !(i == k/2))
+                {
+                    if (tempMod[i] > tempMod[k-i] || tempMod[i] == tempMod[k - i])
+                    {
+                        ans = ans + tempMod[i];
+                    }
+                    else if (tempMod[k-i] > tempMod[i] || tempMod[i] == tempMod[k - i])
+                    {
+                        ans += tempMod[k - i];
+                    }
+                }
+                else if(k%2 == 0 && (i == k/2))
+                {
+                    ans++;
+                }
+            }
+
+            return ans;
+        }
+
+
 
         static void Main(string[] args)
         {
@@ -205,14 +245,24 @@ namespace OOP
             //{
             //    Console.WriteLine(climbingLeaderboard(leaderBoard, playerTable)[i]);
             //}
-            Console.WriteLine("Sayi giriniz:");
-            BigInteger n = BigInteger.Parse(Console.ReadLine());
-            Console.WriteLine(extraLongFactorials(n));
+            //Console.WriteLine("Sayi giriniz:");
+            //BigInteger n = BigInteger.Parse(Console.ReadLine());
+            //Console.WriteLine(extraLongFactorials(n));
 
+            string input = Console.ReadLine();
+            string[] intlist = input.Split(' ');
+            int[] s = new int[int.Parse(intlist[0])];
+            int k = int.Parse(intlist[1]);
+
+            input = Console.ReadLine();
+            intlist = input.Split(' ');
+
+            foreach(var b in intlist.Select((value,i) => (value,i)))
+            {
+                s[b.i] =  int.Parse(b.value);
+            }
+            Console.WriteLine(nonDivisibleSubset(k, s)); 
         }
-
-
-
 
     }
 }
