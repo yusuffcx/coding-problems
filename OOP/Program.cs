@@ -212,6 +212,25 @@ namespace OOP
             return ans;
         }
 
+        static char cupSwapping(string [] swapping)
+        {
+            char ball = 'B';
+            for(int i = 0; i<swapping.Length;i++)
+            {
+                if (swapping[i][0] == ball)
+                {
+                    ball = swapping[i][1];
+                }
+
+                else if(swapping[i][1] == ball)
+                {
+                    ball = swapping[i][0];
+                }
+            }
+
+            return ball;
+        }
+
 
 
         static void Main(string[] args)
@@ -249,6 +268,7 @@ namespace OOP
             //BigInteger n = BigInteger.Parse(Console.ReadLine());
             //Console.WriteLine(extraLongFactorials(n));
 
+            /*
             string input = Console.ReadLine();
             string[] intlist = input.Split(' ');
             int[] s = new int[int.Parse(intlist[0])];
@@ -257,11 +277,15 @@ namespace OOP
             input = Console.ReadLine();
             intlist = input.Split(' ');
 
-            foreach(var b in intlist.Select((value,i) => (value,i)))
+            foreach (var b in intlist.Select((value, i) => (value, i)))
             {
-                s[b.i] =  int.Parse(b.value);
+                s[b.i] = int.Parse(b.value);
             }
-            Console.WriteLine(nonDivisibleSubset(k, s)); 
+            Console.WriteLine(nonDivisibleSubset(k, s));*/
+
+            ;
+            Console.WriteLine(cupSwapping(["CA", "BC", "CA"]));
+
         }
 
     }
