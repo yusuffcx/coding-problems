@@ -211,6 +211,7 @@ namespace OOP
 
             return ans;
         }
+        //            Console.WriteLine(cupSwapping(["CA", "BC", "CA"]));
 
         static char cupSwapping(string [] swapping)
         {
@@ -229,6 +230,24 @@ namespace OOP
             }
 
             return ball;
+        }
+
+        static string encryption(string s)
+        {
+            var col = Math.Ceiling(Math.Sqrt(s.Length));
+            var row = Math.Round(Math.Sqrt(s.Length));
+
+            string[] temp = new string[(int)row];
+            //string temp2 = "";
+
+            for (int i = 0; i< row;i++)
+            {
+                temp[i] = s.Substring(i * (int)col,(int)col );
+                
+            }
+            
+            return 'temp2';
+           // return $"col {col} , row {row}";
         }
 
 
@@ -283,8 +302,11 @@ namespace OOP
             }
             Console.WriteLine(nonDivisibleSubset(k, s));*/
 
-            ;
-            Console.WriteLine(cupSwapping(["CA", "BC", "CA"]));
+            Console.WriteLine(cupSwapping(["AB", "CA"]));
+            Console.WriteLine(cupSwapping(["AC", "CA", "CA", "AC"]));
+            Console.WriteLine(cupSwapping(["BA", "AC", "CA", "BC"]));
+
+            Console.WriteLine(encryption("haveaniceday"));
 
         }
 
