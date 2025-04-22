@@ -246,8 +246,75 @@ namespace OOP
                 
             }
             
-            return 'temp2';
+            return "temp2";
            // return $"col {col} , row {row}";
+        }
+
+        static void countLetter(string s)
+        {
+            // ddmmmk , 2d3m1k 5
+            string rtrn = ""; 
+            int j = 0;
+            int count = 0;
+            char temp = ' ';
+
+            for (int i = 1;i< s.Length;i++)
+            {
+                if(j ==0 && i ==1 && s[i] != s[j])
+                {
+                    temp = s[j];
+                    count++;
+                    rtrn = rtrn + count.ToString() + temp;
+                    count = 0;
+                    j++;
+                }
+
+                else if (i == s.Length-1)
+                {
+                    if (s[i] != s[j])
+                    {
+                        j++;
+;                        rtrn = rtrn + count.ToString() + temp;
+                        count = 0;
+                    }
+
+                    if (s[j] == s[i])
+                    {
+                        count++;
+                    }
+                    else
+                    {
+                        count = 1;
+                    }
+                    temp = s[i];
+                    rtrn = rtrn + count.ToString() + temp;
+                }
+                else if (s[i] == s[j])
+                {
+                    temp = s[i]; 
+                    count++;
+                    if(s[i] == s[i-1] && s[i] == temp && count < 3)
+                    {
+                        count++;
+                    }
+                    j++;
+                }
+
+                else if(s[i] != s[j] && i!=1)
+                {
+                    if (s[j] != s[j - 1] && s[j] != s[j + 1])
+                    {
+                        count++;
+                        temp = s[j];
+                    }
+                    j++;
+                    rtrn = rtrn + count.ToString() + temp;
+                    count = 0;
+                }
+
+        
+            }
+            Console.WriteLine(rtrn);
         }
 
 
@@ -302,13 +369,15 @@ namespace OOP
             }
             Console.WriteLine(nonDivisibleSubset(k, s));*/
 
-            Console.WriteLine(cupSwapping(["AB", "CA"]));
-            Console.WriteLine(cupSwapping(["AC", "CA", "CA", "AC"]));
-            Console.WriteLine(cupSwapping(["BA", "AC", "CA", "BC"]));
+            //            Console.WriteLine(cupSwapping(["AB", "CA"]));
+            //          Console.WriteLine(cupSwapping(["AC", "CA", "CA", "AC"]));
+            //        Console.WriteLine(cupSwapping(["BA", "AC", "CA", "BC"]));
 
-            Console.WriteLine(encryption("haveaniceday"));
-
+            //Console.WriteLine(encryption("haveaniceday"));
+            countLetter("dlmmmmmkkko");
         }
 
     }
 }
+
+
