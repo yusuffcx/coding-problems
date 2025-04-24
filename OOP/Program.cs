@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Numerics;
+using System.Text;
 
 namespace OOP
 {
@@ -303,6 +304,21 @@ namespace OOP
             Console.WriteLine(s + " -> " + isSmooth);
         }
 
+        static void uncensor(string censored, string vowels)
+        {
+            StringBuilder temp = new StringBuilder(censored);
+            int index = 0;
+            for (int i = 0;i < censored.Length;i++)
+            {
+                if (censored[i] == '*')
+                {
+                    temp[i] = vowels[index]; 
+                    index++;
+                }
+            }
+            Console.WriteLine(temp);
+        }
+
 
         static void Main(string[] args)
         {
@@ -360,11 +376,15 @@ namespace OOP
 
             //Console.WriteLine(encryption("haveaniceday"));
             //countLetters("dmmmkkp");
+            /*
             IsSmooth("Marta appreciated deep perpendicular right trapezoids");
-
             IsSmooth("Someone is outside the doorway");
-
             IsSmooth("She eats super righteously");
+            */
+
+            uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo");
+            uncensor("abcd", "");
+            uncensor("*PP*RC*S*", "UEAE");
 
         }
     }
