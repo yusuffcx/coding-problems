@@ -319,6 +319,51 @@ namespace OOP
             Console.WriteLine(temp);
         }
 
+        static void Interview(int[] minutes, int interviewTime)
+        {
+            string[] questions = ["very easy", "very easy", "easy", "easy", "medium", "medium", "hard", "hard"];
+
+            string result = "qualified";
+            if(minutes.Length != 8 || interviewTime > 120)
+            {
+                result = "disqualified";
+            }
+            
+            for(int i = 0; i< minutes.Length ;i++)
+            {
+                if(i == 0 || i ==1)
+                {
+                    if (minutes[i] > 5)
+                    {
+                        result = "disqualified";
+                    }
+                }
+                else if(i == 2 || i == 3)
+                {
+                    if(minutes[i] > 10)
+                    {
+                        result = "disqualified";
+                    }
+                }
+                else if(i == 4 || i == 5)
+                {
+                    if (minutes[i] > 15)
+                    {
+                        result = "disqualified";
+                    }
+                }
+
+                else if(i == 6 || i == 7)
+                {
+                    if (minutes[i] > 20)
+                    {
+                        result = "disqualified";
+                    }
+                }
+            }
+            Console.WriteLine("Interview result is: " + result);
+        }
+
 
         static void Main(string[] args)
         {
@@ -376,15 +421,27 @@ namespace OOP
 
             //Console.WriteLine(encryption("haveaniceday"));
             //countLetters("dmmmkkp");
+
             /*
             IsSmooth("Marta appreciated deep perpendicular right trapezoids");
             IsSmooth("Someone is outside the doorway");
             IsSmooth("She eats super righteously");
             */
 
+            /*
             uncensor("Wh*r* d*d my v*w*ls g*?", "eeioeo");
             uncensor("abcd", "");
             uncensor("*PP*RC*S*", "UEAE");
+            */
+
+            Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 120);
+            Interview(new int[] { 2, 3, 8, 6, 5, 12, 10, 18 }, 64);
+            Interview(new int[] { 5, 5, 10, 10, 25, 15, 20, 20 }, 120);
+            Interview(new int[] { 5, 5, 10, 10, 15, 15, 20 }, 120);
+            Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 130);
+
+
+
 
         }
     }
