@@ -96,18 +96,18 @@ namespace OOP
 
         static int[] climbingLeaderboard(int[] leaderboard, int[] player)
         {
-            int[] tempLeaderboard = new int[leaderboard.Length +1];
+            int[] tempLeaderboard = new int[leaderboard.Length + 1];
 
 
-            for(int i = 0; i < leaderboard.Length;i++)
+            for (int i = 0; i < leaderboard.Length; i++)
             {
-                if(i != 0 && leaderboard[i] == leaderboard[i-1])
+                if (i != 0 && leaderboard[i] == leaderboard[i - 1])
                 {
-                    tempLeaderboard[i] = tempLeaderboard[i-1];
+                    tempLeaderboard[i] = tempLeaderboard[i - 1];
                 }
-                else if( i == 0 )
+                else if (i == 0)
                 {
-                    tempLeaderboard[i] = i+1;
+                    tempLeaderboard[i] = i + 1;
                 }
                 else
                 {
@@ -124,17 +124,17 @@ namespace OOP
                 {
                     if (player[j] > leaderboard[i])
                     {
-                        
+
                         if (i != 0)
                         {
-                           // tempLeaderboard[]
+                            // tempLeaderboard[]
                             tempLeaderboard[tempLeaderboard.Length - 1] = tempLeaderboard[i];
                             ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
                             break;
                         }
-                        else if(i == 0)
+                        else if (i == 0)
                         {
-                            tempLeaderboard[tempLeaderboard.Length - 1] = i+1;
+                            tempLeaderboard[tempLeaderboard.Length - 1] = i + 1;
                             ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
                             break;
                         }
@@ -152,9 +152,9 @@ namespace OOP
                         ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
                         break;
                     }
-                    else if(player[j] < leaderboard[i] &&  i == leaderboard.Length - 1)
+                    else if (player[j] < leaderboard[i] && i == leaderboard.Length - 1)
                     {
-                        tempLeaderboard[tempLeaderboard.Length - 1] = tempLeaderboard[i] +1 ;
+                        tempLeaderboard[tempLeaderboard.Length - 1] = tempLeaderboard[i] + 1;
                         ints[j] = tempLeaderboard[tempLeaderboard.Length - 1];
                         break;
                     }
@@ -163,7 +163,7 @@ namespace OOP
             return ints;
         }
 
-        
+
 
 
         static BigInteger extraLongFactorials(BigInteger n)
@@ -176,34 +176,34 @@ namespace OOP
             }
         }
 
-        static int nonDivisibleSubset(int k, int[]s)
+        static int nonDivisibleSubset(int k, int[] s)
         {
             int[] tempMod = new int[k]; // 0, 1, 2, 3, ....k //7
             int ans = 0;
             foreach (int i in tempMod) { tempMod[i] = 0; }
-            for(int i = 0;i<s.Length;i++)
+            for (int i = 0; i < s.Length; i++)
             {
-                tempMod[s[i] % k]++; 
+                tempMod[s[i] % k]++;
             }
 
-            for(int i = 0;i<=k/2;i++)
+            for (int i = 0; i <= k / 2; i++)
             {
-                if(tempMod[i]>0 && i == 0)
+                if (tempMod[i] > 0 && i == 0)
                 {
                     ans++;
                 }
-                else if (k%2 == 0 && !(i == k/2))
+                else if (k % 2 == 0 && !(i == k / 2))
                 {
-                    if (tempMod[i] > tempMod[k-i] || tempMod[i] == tempMod[k - i])
+                    if (tempMod[i] > tempMod[k - i] || tempMod[i] == tempMod[k - i])
                     {
                         ans = ans + tempMod[i];
                     }
-                    else if (tempMod[k-i] > tempMod[i] || tempMod[i] == tempMod[k - i])
+                    else if (tempMod[k - i] > tempMod[i] || tempMod[i] == tempMod[k - i])
                     {
                         ans += tempMod[k - i];
                     }
                 }
-                else if(k%2 == 0 && (i == k/2))
+                else if (k % 2 == 0 && (i == k / 2))
                 {
                     ans++;
                 }
@@ -213,17 +213,17 @@ namespace OOP
         }
         //            Console.WriteLine(cupSwapping(["CA", "BC", "CA"]));
 
-        static char cupSwapping(string [] swapping)
+        static char cupSwapping(string[] swapping)
         {
             char ball = 'B';
-            for(int i = 0; i<swapping.Length;i++)
+            for (int i = 0; i < swapping.Length; i++)
             {
                 if (swapping[i][0] == ball)
                 {
                     ball = swapping[i][1];
                 }
 
-                else if(swapping[i][1] == ball)
+                else if (swapping[i][1] == ball)
                 {
                     ball = swapping[i][0];
                 }
@@ -240,83 +240,68 @@ namespace OOP
             string[] temp = new string[(int)row];
             //string temp2 = "";
 
-            for (int i = 0; i< row;i++)
+            for (int i = 0; i < row; i++)
             {
-                temp[i] = s.Substring(i * (int)col,(int)col );
-                
+                temp[i] = s.Substring(i * (int)col, (int)col);
+
             }
-            
+
             return "temp2";
-           // return $"col {col} , row {row}";
+            // return $"col {col} , row {row}";
         }
 
-        static void countLetter(string s)
-        {
-            // ddmmmk , 2d3m1k 5
-            string rtrn = ""; 
-            int j = 0;
+
+        static void countLetters(string s)
+        {//ddmmmk , 2d3m1k
+            char temp = s[0];
             int count = 0;
-            char temp = ' ';
-
-            for (int i = 1;i< s.Length;i++)
+            string result = "";
+            for (int i = 0; i < s.Length; i++)
             {
-                if(j ==0 && i ==1 && s[i] != s[j])
+
+
+                if (s[i] == temp)
                 {
-                    temp = s[j];
                     count++;
-                    rtrn = rtrn + count.ToString() + temp;
-                    count = 0;
-                    j++;
                 }
-
-                else if (i == s.Length-1)
+                else if (s[i] != temp)
                 {
-                    if (s[i] != s[j])
-                    {
-                        j++;
-;                        rtrn = rtrn + count.ToString() + temp;
-                        count = 0;
-                    }
-
-                    if (s[j] == s[i])
-                    {
-                        count++;
-                    }
-                    else
-                    {
-                        count = 1;
-                    }
+                    result = result + count.ToString() + temp.ToString();
                     temp = s[i];
-                    rtrn = rtrn + count.ToString() + temp;
-                }
-                else if (s[i] == s[j])
-                {
-                    temp = s[i]; 
-                    count++;
-                    if(s[i] == s[i-1] && s[i] == temp && count < 3)
-                    {
-                        count++;
-                    }
-                    j++;
-                }
-
-                else if(s[i] != s[j] && i!=1)
-                {
-                    if (s[j] != s[j - 1] && s[j] != s[j + 1])
-                    {
-                        count++;
-                        temp = s[j];
-                    }
-                    j++;
-                    rtrn = rtrn + count.ToString() + temp;
                     count = 0;
-                }
+                    if (s[i] == temp)
+                    {
+                        count++;
+                    }
+                    if (i == s.Length - 1)
+                    {
+                        result = result + count.ToString() + temp.ToString();
+                    }
 
-        
+                }
             }
-            Console.WriteLine(rtrn);
+            Console.WriteLine(result);
         }
 
+
+        static void IsSmooth(string s)
+        {// Marta appreciated deep perpendicular right trapezoids -> true
+
+            char temp = ' ';
+            bool isSmooth = false;
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (s[i] == ' ')
+                {
+                    if (s[i - 1] == s[i + 1])
+                    {
+                        isSmooth = true;
+                    }
+                }
+            }
+
+            Console.WriteLine(s + " -> " + isSmooth);
+        }
 
 
         static void Main(string[] args)
@@ -374,9 +359,14 @@ namespace OOP
             //        Console.WriteLine(cupSwapping(["BA", "AC", "CA", "BC"]));
 
             //Console.WriteLine(encryption("haveaniceday"));
-            countLetter("dlmmmmmkkko");
-        }
+            //countLetters("dmmmkkp");
+            IsSmooth("Marta appreciated deep perpendicular right trapezoids");
 
+            IsSmooth("Someone is outside the doorway");
+
+            IsSmooth("She eats super righteously");
+
+        }
     }
 }
 
