@@ -308,11 +308,11 @@ namespace OOP
         {
             StringBuilder temp = new StringBuilder(censored);
             int index = 0;
-            for (int i = 0;i < censored.Length;i++)
+            for (int i = 0; i < censored.Length; i++)
             {
                 if (censored[i] == '*')
                 {
-                    temp[i] = vowels[index]; 
+                    temp[i] = vowels[index];
                     index++;
                 }
             }
@@ -324,28 +324,28 @@ namespace OOP
             string[] questions = ["very easy", "very easy", "easy", "easy", "medium", "medium", "hard", "hard"];
 
             string result = "qualified";
-            if(minutes.Length != 8 || interviewTime > 120)
+            if (minutes.Length != 8 || interviewTime > 120)
             {
                 result = "disqualified";
             }
-            
-            for(int i = 0; i< minutes.Length ;i++)
+
+            for (int i = 0; i < minutes.Length; i++)
             {
-                if(i == 0 || i ==1)
+                if (i == 0 || i == 1)
                 {
                     if (minutes[i] > 5)
                     {
                         result = "disqualified";
                     }
                 }
-                else if(i == 2 || i == 3)
+                else if (i == 2 || i == 3)
                 {
-                    if(minutes[i] > 10)
+                    if (minutes[i] > 10)
                     {
                         result = "disqualified";
                     }
                 }
-                else if(i == 4 || i == 5)
+                else if (i == 4 || i == 5)
                 {
                     if (minutes[i] > 15)
                     {
@@ -353,7 +353,7 @@ namespace OOP
                     }
                 }
 
-                else if(i == 6 || i == 7)
+                else if (i == 6 || i == 7)
                 {
                     if (minutes[i] > 20)
                     {
@@ -362,6 +362,67 @@ namespace OOP
                 }
             }
             Console.WriteLine("Interview result is: " + result);
+        }
+
+
+        static bool checkPrime(int x)
+        {
+            for (int i = 2; i < x; i++)
+            {
+                if (x % i == 0)
+                {
+                    return false; // number isn't prime
+                }
+            }
+            return true; // number is prime 
+        }
+
+        static string Simplify(string fraction)
+        {
+            int parseNum = 0;
+            string tempNum1 = "";
+            string tempNum2 = "";
+            // fraction = 4/6;
+            // fraction = 10/11;
+            for (int j = 0; j < fraction.Length; j++)
+            {
+                if (fraction[j] == '/')
+                {
+                    for (int m = 0; m < j; m++)
+                    {
+                        tempNum1 = tempNum1 + fraction[m];
+                    }
+                    for (int k = j + 1; k < fraction.Length; k++)
+                    {
+                        tempNum2 = tempNum2 + fraction[k];
+                    }
+                }
+            }
+            int num1 = Int32.Parse(tempNum1);
+            int num2 = Int32.Parse(tempNum2);
+
+            
+            if ((num1/num2) > 1)
+            {
+                return (num1/num2).ToString();
+            }
+
+            int i = 2;
+            while (i <= num1)
+            {
+                if (num1 % i == 0 && num2 % i == 0)
+                {
+                    num1 = num1 / i;
+                    num2 = num2 / i;
+                    i = 2;
+                }
+                else { i++; }
+            }
+
+            string[] st = [num1.ToString(), "/", num2.ToString()];
+            string result = new string(st[0] + st[1] + st[2]);
+
+            return result;
         }
 
 
@@ -434,12 +495,18 @@ namespace OOP
             uncensor("*PP*RC*S*", "UEAE");
             */
 
-            Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 120);
-            Interview(new int[] { 2, 3, 8, 6, 5, 12, 10, 18 }, 64);
-            Interview(new int[] { 5, 5, 10, 10, 25, 15, 20, 20 }, 120);
-            Interview(new int[] { 5, 5, 10, 10, 15, 15, 20 }, 120);
-            Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 130);
+            //Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 120);
+            //Interview(new int[] { 2, 3, 8, 6, 5, 12, 10, 18 }, 64);
+            //Interview(new int[] { 5, 5, 10, 10, 25, 15, 20, 20 }, 120);
+            //Interview(new int[] { 5, 5, 10, 10, 15, 15, 20 }, 120);
+            //Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 130);
 
+            Console.WriteLine(Simplify("4/6"));
+            Console.WriteLine(Simplify("10/11"));
+            Console.WriteLine(Simplify("100/400"));
+            Console.WriteLine(Simplify("8/4"));
+            Console.WriteLine(Simplify("15/21"));
+            Console.WriteLine(Simplify("105/102"));
 
 
 
