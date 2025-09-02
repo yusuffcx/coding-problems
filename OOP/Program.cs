@@ -401,10 +401,10 @@ namespace OOP
             int num1 = Int32.Parse(tempNum1);
             int num2 = Int32.Parse(tempNum2);
 
-            
-            if ((num1/num2) > 1)
+
+            if ((num1 / num2) > 1)
             {
-                return (num1/num2).ToString();
+                return (num1 / num2).ToString();
             }
 
             int i = 2;
@@ -421,6 +421,38 @@ namespace OOP
 
             string[] st = [num1.ToString(), "/", num2.ToString()];
             string result = new string(st[0] + st[1] + st[2]);
+
+            return result;
+        }
+
+        static string FiboWord(int n)
+        {
+            if (n == 1)
+            {
+                return "Invalid";
+            }
+
+            string[] temp = new string[n];
+            temp[0] = "b";
+            temp[1] = "a";
+            string result = string.Empty;
+
+            for (int i = 2; i < n; i++)
+            {
+                temp[i] = temp[i - 1] + temp[i - 2];
+            }
+
+            for (int k = 0; k < temp.Length; k++)
+            {
+                if(k != temp.Length -1)
+                {
+                    result += temp[k] + ", ";
+                }
+                else
+                {
+                    result += temp[k];
+                }
+            }
 
             return result;
         }
@@ -501,15 +533,16 @@ namespace OOP
             //Interview(new int[] { 5, 5, 10, 10, 15, 15, 20 }, 120);
             //Interview(new int[] { 5, 5, 10, 10, 15, 15, 20, 20 }, 130);
 
-            Console.WriteLine(Simplify("4/6"));
-            Console.WriteLine(Simplify("10/11"));
-            Console.WriteLine(Simplify("100/400"));
-            Console.WriteLine(Simplify("8/4"));
-            Console.WriteLine(Simplify("15/21"));
-            Console.WriteLine(Simplify("105/102"));
+            //Console.WriteLine(Simplify("4/6"));
+            //Console.WriteLine(Simplify("10/11"));
+            //Console.WriteLine(Simplify("100/400"));
+            //Console.WriteLine(Simplify("8/4"));
+            //Console.WriteLine(Simplify("15/21"));
+            //Console.WriteLine(Simplify("105/102"));
 
-
-
+            Console.WriteLine(FiboWord(1));
+            Console.WriteLine(FiboWord(3));
+            Console.WriteLine(FiboWord(7));
         }
     }
 }
