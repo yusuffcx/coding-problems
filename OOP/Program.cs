@@ -288,7 +288,6 @@ namespace OOP
         static void IsSmooth(string s)
         {// Marta appreciated deep perpendicular right trapezoids -> true
 
-            char temp = ' ';
             bool isSmooth = false;
             for (int i = 0; i < s.Length; i++)
             {
@@ -379,7 +378,6 @@ namespace OOP
 
         static string Simplify(string fraction)
         {
-            int parseNum = 0;
             string tempNum1 = "";
             string tempNum2 = "";
             // fraction = 4/6;
@@ -444,7 +442,7 @@ namespace OOP
 
             for (int k = 0; k < temp.Length; k++)
             {
-                if(k != temp.Length -1)
+                if (k != temp.Length - 1)
                 {
                     result += temp[k] + ", ";
                 }
@@ -455,6 +453,35 @@ namespace OOP
             }
 
             return result;
+        }
+
+        static string MaxOccur(string s)
+        {
+            int temp;
+            string mosts;
+            Dictionary<char, int> counts = new Dictionary<char, int>();
+            for (int i = 0; i < s.Length; i++)
+            {
+                if (!counts.ContainsKey(s[i]))
+                {
+                    counts[s[i]] = 0;
+                }
+                counts[s[i]]++;
+            }
+
+            var maxCount = counts.Values.Max();
+            char maxCountWord = counts.MaxBy(e => e.Value).Key;
+
+
+            if(maxCount == 1)
+            {
+                return "No Repetition";
+            }
+
+            var maxChars = counts.Where(x => x.Value == maxCount).Select(x => x.Key).ToList();
+
+
+            return string.Join(',',maxChars);
         }
 
 
@@ -540,9 +567,16 @@ namespace OOP
             //Console.WriteLine(Simplify("15/21"));
             //Console.WriteLine(Simplify("105/102"));
 
-            Console.WriteLine(FiboWord(1));
-            Console.WriteLine(FiboWord(3));
-            Console.WriteLine(FiboWord(7));
+            //Console.WriteLine(FiboWord(1));
+            //Console.WriteLine(FiboWord(3));
+            //Console.WriteLine(FiboWord(7));
+             Console.WriteLine(MaxOccur("Computer Science"));
+            Console.WriteLine(MaxOccur("Edabit"));
+            Console.WriteLine(MaxOccur("system admin"));
+            //Console.WriteLine(MaxOccur("the quick brown fox jumps over the lazy dog"));
+            //Console.WriteLine(MaxOccur("edabitisawesomequickcountingmergebubbleinsertionselctionshellsortingbinarylinearsearch"));
+            //Console.WriteLine(MaxOccur("Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science"));
+
         }
     }
 }
