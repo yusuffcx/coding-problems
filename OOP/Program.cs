@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Numerics;
 using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace OOP
 {
@@ -473,7 +474,7 @@ namespace OOP
             char maxCountWord = counts.MaxBy(e => e.Value).Key;
 
 
-            if(maxCount == 1)
+            if (maxCount == 1)
             {
                 return "No Repetition";
             }
@@ -481,7 +482,35 @@ namespace OOP
             var maxChars = counts.Where(x => x.Value == maxCount).Select(x => x.Key).ToList();
 
 
-            return string.Join(',',maxChars);
+            return string.Join(',', maxChars);
+        }
+
+        static int GCD(int a, int b)
+        {
+            while (b != 0)
+            {
+                int temp = b;
+                b = a % b;
+                a = temp;
+            }
+            return a;
+        }
+
+        static double UniqueFracts()
+        {
+            double sum = 0;
+
+            for (int i = 1; i < 10; i++)
+            {
+                for (int j = i + 1; j < 10; j++)
+                {
+                    if (GCD(j, i) == 1)
+                    {
+                        sum += (double)i / j;
+                    }
+                }
+            }
+            return sum;
         }
 
 
@@ -570,12 +599,16 @@ namespace OOP
             //Console.WriteLine(FiboWord(1));
             //Console.WriteLine(FiboWord(3));
             //Console.WriteLine(FiboWord(7));
-             Console.WriteLine(MaxOccur("Computer Science"));
-            Console.WriteLine(MaxOccur("Edabit"));
-            Console.WriteLine(MaxOccur("system admin"));
+            // Console.WriteLine(MaxOccur("Computer Science"));
+            //Console.WriteLine(MaxOccur("Edabit"));
+            //Console.WriteLine(MaxOccur("system admin"));
             //Console.WriteLine(MaxOccur("the quick brown fox jumps over the lazy dog"));
             //Console.WriteLine(MaxOccur("edabitisawesomequickcountingmergebubbleinsertionselctionshellsortingbinarylinearsearch"));
             //Console.WriteLine(MaxOccur("Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science"));
+
+
+
+            Console.WriteLine(UniqueFracts());
 
         }
     }
