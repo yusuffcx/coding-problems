@@ -514,6 +514,48 @@ namespace OOP
         }
 
 
+
+        static void ArrowPattern(int n)
+        {
+            int count;
+            if(n == 0)
+            {
+                return;
+            }
+
+            for(int i = 1; i <= n; i++)
+            {
+                count = i;
+                while(count != 0)
+                {
+                    Console.Write(">");
+                    count--;
+                }
+                Console.WriteLine();
+            }
+            int temp;
+            if(n%2 == 0)
+            {
+                temp = n;
+            }
+            else
+            {
+                temp=n -1 ;
+            }
+
+            for(int j=temp;j>0;j--)
+            {
+                count = j;
+                while(count != 0)
+                {
+                    Console.Write(">");
+                    count--;
+                }
+                Console.WriteLine();
+            }
+        }
+
+
         static void Main(string[] args)
         {
             /* // for Magic square problem 
@@ -605,10 +647,11 @@ namespace OOP
             //Console.WriteLine(MaxOccur("the quick brown fox jumps over the lazy dog"));
             //Console.WriteLine(MaxOccur("edabitisawesomequickcountingmergebubbleinsertionselctionshellsortingbinarylinearsearch"));
             //Console.WriteLine(MaxOccur("Computer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer ScienceComputer Science"));
+            //Console.WriteLine(UniqueFracts());
 
+           // ArrowPattern(4);
+           // ArrowPattern2(4);
 
-
-            Console.WriteLine(UniqueFracts());
 
         }
     }
